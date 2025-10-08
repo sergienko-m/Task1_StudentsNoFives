@@ -22,7 +22,9 @@
 
 Після проходу вивести загальну кількість таких студентів.
 
-🔹 Код (C++ wide-console)
+### 🔹 Код (C++ wide-console)
+
+```cpp
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -35,6 +37,7 @@ struct Student { int num; wstring name; int inf, math, phys, prog; };
 
 int main() {
     _setmode(_fileno(stdout), _O_U16TEXT);
+
     vector<Student> s = {
         {1,  L"Іванчук С.О.",      4,3,3,4},
         {2,  L"Панченко І.А.",     5,4,4,5},
@@ -48,18 +51,21 @@ int main() {
         {10, L"Дячик Н.С.",        5,5,4,4}
     };
 
-    wcout << L"Студенти без жодної '5':\\n";
+    wcout << L"Студенти без жодної '5':\n";
     wcout << left << setw(4) << L"№" << setw(22) << L"Прізвище"
           << setw(6) << L"Інф" << setw(6) << L"В.М."
-          << setw(6) << L"Фіз" << setw(6) << L"Прог" << L"\\n";
+          << setw(6) << L"Фіз" << setw(6) << L"Прог" << L"\n";
 
     int cnt = 0;
     for (auto& x : s)
         if (x.inf!=5 && x.math!=5 && x.phys!=5 && x.prog!=5) {
             wcout << left << setw(4) << x.num << setw(22) << x.name
                   << setw(6) << x.inf << setw(6) << x.math
-                  << setw(6) << x.phys << setw(6) << x.prog << L"\\n";
+                  << setw(6) << x.phys << setw(6) << x.prog << L"\n";
             cnt++;
         }
+    wcout << L"\nКількість студентів без оцінок '5': " << cnt << L"\n";
+}
+
     wcout << L"\\nКількість студентів без оцінок '5': " << cnt << L"\\n";
 }
